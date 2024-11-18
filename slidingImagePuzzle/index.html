@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width initial-scale=1.0">
+    <title>CODE MONKS: SLIDING PUZZLE</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body onload="load()">
+    <div class="load screen" id="load">
+        <div class="spinner-box">
+            <div class="configure-border-1">
+                <div class="configure-core"></div>
+            </div>
+            <div class="configure-border-2">
+                <div class="configure-core"></div>
+            </div>
+        </div>
+    </div>
+    <div class="screen game">
+        <div class="pan slider">
+            <div class="container box">
+                <div class="row" id="r1">
+                    <div class="plate" id="p1"></div>
+                    <div class="plate" id="p2"></div>
+                    <div class="plate" id="p3"></div>
+                </div>
+                <div class="row" id="r2">
+                    <div class="plate" id="p4"></div>
+                    <div class="plate" id="p5"></div>
+                    <div class="plate" id="p6"></div>
+                </div>
+                <div class="row" id="r3">
+                    <div class="plate" id="p7"></div>
+                    <div class="plate" id="p8"></div>
+                    <div class="plate" id="p9"></div>
+                </div>
+            </div>
+        </div>
+        <div class="pan org">
+            <img class="box" src="image.png">
+        </div>
+    </div>
+    <div class="screen main" id="main">
+        <button class="start" onclick="start()">START</button>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
