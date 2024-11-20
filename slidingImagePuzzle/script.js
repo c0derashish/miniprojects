@@ -3,21 +3,46 @@ function load() {
 }
 
 function toggleInfo(showInfo) {
-    document.getElementById("infoo").style.display = showInfo ? "block" : "none";
-    document.getElementById("infoc").style.display = !showInfo ? "block" : "none";
-  
     const infoElement = document.getElementsByClassName("info")[0];
     infoElement.style.height = showInfo ? "100%" : "0%";
     infoElement.style.borderRadius = showInfo ? "0" : "0 0 50% 50%";
     infoElement.style.animationName = showInfo ? "expandInfo" : "collapseInfo";
-  }
-  
-  document.getElementById("infoo").addEventListener('click', () => {
+}
+
+document.getElementById("infoo").addEventListener('click', () => {
     toggleInfo(true);
+    document.getElementById("infoo").style.display = "none";
+    document.getElementById("infoc").style.display = "block";
+});
+
+document.getElementById("infoc").addEventListener('click', () => {
+    toggleInfo(false);
+    document.getElementById("infoo").style.display = "block";
+    document.getElementById("infoc").style.display = "none";
+});
+
+document.getElementById("home").addEventListener('click', () => {
+    if (confirm("Are you sure you want to leave the game?")) {
+        window.location.reload()}
+});
+
+// function toggleGoalSection(showSection) {
+//     const goalSection = document.getElementsByClassName("org");
+//     const sliderSection = document.getElementsByClassName("slider");
+//     goalSection.style.right = showSection ? "0" : "100px";
+//     sliderSection.style.left = showSection ? "100px" : "0";
+//     goalSection.style.animationName = showSection ? "togIn" : "togOut";
+//     sliderSection.style.animationName = showSection ? "togOut" : "togIn";
+// }
+
+document.getElementById("ref").addEventListener('click', () => {
+    // toggleGoalSection(true);
+    document.getElementsByClassName("org").right=("0");
   });
   
-  document.getElementById("infoc").addEventListener('click', () => {
-    toggleInfo(false);
+  document.getElementById("ga").addEventListener('click', () => {
+    // toggleGoalSection(false);
+    document.getElementsByClassName("org").right=("100px");
   });
 
 function shuffleArray(array) {
@@ -69,19 +94,20 @@ function updateBoard() {
 function checkWin() {
     if (nset.join('') === '123456789') {
         document.getElementById(`p9`).innerHTML = `<img src="image_part_009.png" class="pl" id="pl9">`;
-        alert("Congratulations! You won the game!");
+        alert(`Congratulations! You won the game!\nIn only ${totalMoves} moves.`);
     }
 }
 
 function start() {
     document.getElementById("main").style.display = "none";
     updateBoard();
-    let moves = 0;
+    alert(`Welocome!\nClick on the pices that shares a side with blank box.\nBest of luck!!`);
     play();
 }
 
 document.getElementById("reset").addEventListener('click', () => {
     shuffleArray(nset);
+    alert(`Don't give up!\nPlay till the last move.`);
     totalMoves = 0;
     updateBoard();
 });
