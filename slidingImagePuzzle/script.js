@@ -2,6 +2,24 @@ function load() {
     document.getElementById("load").style.display = "none";
 }
 
+function toggleInfo(showInfo) {
+    document.getElementById("infoo").style.display = showInfo ? "block" : "none";
+    document.getElementById("infoc").style.display = !showInfo ? "block" : "none";
+  
+    const infoElement = document.getElementsByClassName("info")[0];
+    infoElement.style.height = showInfo ? "100%" : "0%";
+    infoElement.style.borderRadius = showInfo ? "0" : "0 0 50% 50%";
+    infoElement.style.animationName = showInfo ? "expandInfo" : "collapseInfo";
+  }
+  
+  document.getElementById("infoo").addEventListener('click', () => {
+    toggleInfo(true);
+  });
+  
+  document.getElementById("infoc").addEventListener('click', () => {
+    toggleInfo(false);
+  });
+
 function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -11,6 +29,7 @@ function shuffleArray(array) {
 
 const set = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 const nset = [...set];
+let totalMoves = 0;
 shuffleArray(nset);
 
 function play() {
@@ -33,6 +52,8 @@ function play() {
             nset[emptyTileIndex] = tileValue;
             emptyTileIndex = index;
             updateBoard();
+            totalMoves++;
+            document.getElementById("mov").innerHTML = `${totalMoves}`;
             checkWin();
             play();
         };
@@ -47,6 +68,7 @@ function updateBoard() {
 
 function checkWin() {
     if (nset.join('') === '123456789') {
+        document.getElementById(`p9`).innerHTML = `<img src="image_part_009.png" class="pl" id="pl9">`;
         alert("Congratulations! You won the game!");
     }
 }
@@ -54,5 +76,12 @@ function checkWin() {
 function start() {
     document.getElementById("main").style.display = "none";
     updateBoard();
+    let moves = 0;
     play();
 }
+
+document.getElementById("reset").addEventListener('click', () => {
+    shuffleArray(nset);
+    totalMoves = 0;
+    updateBoard();
+});

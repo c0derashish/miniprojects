@@ -5,7 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width initial-scale=1.0">
     <title>CODE MONKS: SLIDING PUZZLE</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Joti+One&family=Satisfy&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/4b8f823202.js" crossorigin="anonymous"></script>
 </head>
 
 <body onload="load()">
@@ -19,32 +22,61 @@
             </div>
         </div>
     </div>
-    <div class="screen game">
-        <div class="pan slider">
-            <div class="container box">
-                <div class="row" id="r1">
-                    <div class="plate" id="p1"></div>
-                    <div class="plate" id="p2"></div>
-                    <div class="plate" id="p3"></div>
-                </div>
-                <div class="row" id="r2">
-                    <div class="plate" id="p4"></div>
-                    <div class="plate" id="p5"></div>
-                    <div class="plate" id="p6"></div>
-                </div>
-                <div class="row" id="r3">
-                    <div class="plate" id="p7"></div>
-                    <div class="plate" id="p8"></div>
-                    <div class="plate" id="p9"></div>
+    <div class="screen">
+        <div class="sec game">
+            <center class="love">MADE WITH ❤️ BY, CODE MONKS...</center>
+            <button class="mgame" id="moves" disabled="disabled">MOVES: <span id="mov">0</span></button>
+            <button class="mgame" id="reset">RESET</button>
+            <button class="mgame" id="home" onclick="window.location.reload()">HOME</button>
+            <div class="pan slider">
+                <div class="container box">
+                    <div class="row" id="r1">
+                        <div class="plate" id="p1"></div>
+                        <div class="plate" id="p2"></div>
+                        <div class="plate" id="p3"></div>
+                    </div>
+                    <div class="row" id="r2">
+                        <div class="plate" id="p4"></div>
+                        <div class="plate" id="p5"></div>
+                        <div class="plate" id="p6"></div>
+                    </div>
+                    <div class="row" id="r3">
+                        <div class="plate" id="p7"></div>
+                        <div class="plate" id="p8"></div>
+                        <div class="plate" id="p9"></div>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="pan org">
-            <img class="box" src="image.png">
+            <div class="pan org">
+                <img class="box" src="image.png">
+            </div>
         </div>
     </div>
     <div class="screen main" id="main">
-        <button class="start" onclick="start()">START</button>
+        <div class="sec">
+            <center>
+                <h1>SLIDING<br><span class="puz">PUZZLE</span></h1>
+                <button class="start" onclick="start()">START</button>
+            </center>
+            <center class="love">MADE WITH ❤️ BY, CODE MONKS...</center>
+            <div class="info">
+                <span>
+                    <h5>MINI PROJECT:</h5>
+                    <h2>CODE MONKS</h2>
+                    <hr>
+                    <p class="members">
+                        TEAM MEMBERS:
+                    </p>
+                    <ul>
+                        <li>ASHISH CHANDRA [ TEAM LEADER ]</li>
+                        <li>ALISHA KHAN</li>
+                        <li>ANUJ AGRAWAL</li>
+                    </ul>
+                    </center>
+            </div>
+            <button class="if" id="infoo" onclick="infoo()">INFO</button>
+            <button class="if" id="infoc" onclick="infoc()" style="display: none;">BACK</button>
+        </div>
     </div>
     <script src="script.js"></script>
 </body>
