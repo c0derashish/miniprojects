@@ -70,7 +70,7 @@ function shuffleArray(array) {
 }
 
 const set = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-const img = [1, 2, 3];
+const img = [1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3];
 const nset = [...set];
 let totalMoves = 0;
 shuffleArray(nset);
