@@ -53,8 +53,8 @@
                     </div>
                 </div>
             </div>
-            <div class="pan org">
-                <img class="box" src="image.png">
+            <div class="pan org" id="org">
+                
             </div>
         </div>
     </div>
@@ -82,6 +82,34 @@
             </div>
             <button class="if" id="infoo" onclick="infoo()">INFO</button>
             <button class="if" id="infoc" onclick="infoc()" style="display: none;">BACK</button>
+        </div>
+        <div id="alert">
+            <span class="alt" id="sta">
+                <h2>WELCOME</h2>
+                <hr>
+                <p>CLICK ON THE PIECES THAT SHARE A SIDE WITH THE BLANK BOX.<br>BEST OF LUCK!!</p>
+                <button class="close">CLOSE</button>
+            </span>
+            <span class="alt" id="res">
+                <h2>RESETING</h2>
+                <hr>
+                <p>DON'T GIVE UP!<br>PLAY TILL THE LAST MOVE.</p>
+                <button class="close">CLOSE</button>
+            </span>
+            <span class="alt" id="ext">
+                <h2>REALLY?</h2>
+                <hr>
+                <p>YOU ARE AT FEW STEPS.<br>ARE YOU SURE?</p>
+                <button class="close">CLOSE</button>
+                <button class="close" id="hom">HOME</button>
+            </span>
+            <span class="alt" id="ext">
+                <h2>CONGRATULATIONS!!</h2>
+                <hr>
+                <p id="won"></p>
+                <button class="close">CLOSE</button>
+                <button class="close" id="new">NEW GAME</button>
+            </span>
         </div>
     </div>
     <script src="script.js"></script>

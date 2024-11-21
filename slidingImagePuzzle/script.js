@@ -9,6 +9,23 @@ function toggleInfo(showInfo) {
     infoElement.style.animationName = showInfo ? "expandInfo" : "collapseInfo";
 }
 
+// const sta = document.getElementById("sta");
+// const res = document.getElementById("res");
+// const ext = document.getElementById("ext");
+// const alertp = document.getElementById("alert");
+// document.getElementsByClassName("close").addEventListener('click', () => {
+//     alertp.animationName = ("collapseInfo");
+//     sta.style.display = ("none");
+//     res.style.display = ("none");
+//     ext.style.display = ("none");
+//     alertp.style.height = "0%";
+//     alertp.style.borderRadius = ("0 0 50% 50%");
+// });
+
+document.getElementById("hom").addEventListener('click', () => {
+    window.location.reload();
+});
+
 document.getElementById("infoo").addEventListener('click', () => {
     toggleInfo(true);
     document.getElementById("infoo").style.display = "none";
@@ -21,28 +38,28 @@ document.getElementById("infoc").addEventListener('click', () => {
     document.getElementById("infoc").style.display = "none";
 });
 
+// document.getElementById("home").addEventListener('click', () => {
+//     ext.style.display = ("block");
+//     alertp.animationName = ("expandInfo");
+//     alertp.style.height = ("100%");
+//     alertp.style.borderRadius = ("0");
+// });
+
 document.getElementById("home").addEventListener('click', () => {
     if (confirm("Are you sure you want to leave the game?")) {
         window.location.reload()}
 });
 
-// function toggleGoalSection(showSection) {
-//     const goalSection = document.getElementsByClassName("org");
-//     const sliderSection = document.getElementsByClassName("slider");
-//     goalSection.style.right = showSection ? "0" : "100px";
-//     sliderSection.style.left = showSection ? "100px" : "0";
-//     goalSection.style.animationName = showSection ? "togIn" : "togOut";
-//     sliderSection.style.animationName = showSection ? "togOut" : "togIn";
-// }
-
 document.getElementById("ref").addEventListener('click', () => {
-    // toggleGoalSection(true);
-    document.getElementsByClassName("org").right=("0");
+    document.getElementById("org").style.display = "block";
+    document.getElementById("ref").style.display = "none";
+    document.getElementById("ga").style.display = "block";
   });
   
   document.getElementById("ga").addEventListener('click', () => {
-    // toggleGoalSection(false);
-    document.getElementsByClassName("org").right=("100px");
+    document.getElementById("org").style.display = "none";
+    document.getElementById("ref").style.display = "block";
+    document.getElementById("ga").style.display = "none";
   });
 
 function shuffleArray(array) {
@@ -53,9 +70,21 @@ function shuffleArray(array) {
 }
 
 const set = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+const img = [1, 2, 3];
 const nset = [...set];
 let totalMoves = 0;
 shuffleArray(nset);
+shuffleArray(img);
+
+function movo() {
+    totalMoves = 0;
+    document.getElementById("mov").innerHTML = `${totalMoves}`;
+}
+
+function movp() {
+    totalMoves++;
+    document.getElementById("mov").innerHTML = `${totalMoves}`;
+}
 
 function play() {
     let emptyTileIndex = nset.indexOf(9);
@@ -66,8 +95,8 @@ function play() {
         emptyTileIndex + 3
     ].filter(index => index >= 0 && index < 9);
 
-    for (let i = 0; i < 9; i++) {
-        document.getElementById(`p${i + 1}`).onclick = null;
+    for (let i = 1; i < 10; i++) {
+        document.getElementById(`p${i}`).onclick = null;
     }
 
     possibleMoves.forEach(index => {
@@ -77,8 +106,7 @@ function play() {
             nset[emptyTileIndex] = tileValue;
             emptyTileIndex = index;
             updateBoard();
-            totalMoves++;
-            document.getElementById("mov").innerHTML = `${totalMoves}`;
+            movp();
             checkWin();
             play();
         };
@@ -87,19 +115,20 @@ function play() {
 
 function updateBoard() {
     for (let i = 0; i < 9; i++) {
-        document.getElementById(`p${i + 1}`).innerHTML = `<img src="image_part_00${nset[i]}.png" class="pl" id="pl${i + 1}">`;
+        document.getElementById(`p${i + 1}`).innerHTML = `<img src="image${img[0]}0${nset[i]}.png" class="pl" id="pl${i + 1}">`;
     }
 }
 
 function checkWin() {
     if (nset.join('') === '123456789') {
-        document.getElementById(`p9`).innerHTML = `<img src="image_part_009.png" class="pl" id="pl9">`;
+        document.getElementById(`p9`).innerHTML = `<img src="image${img[0]}00.png" class="pl" id="pl9">`;
         alert(`Congratulations! You won the game!\nIn only ${totalMoves} moves.`);
     }
 }
 
 function start() {
     document.getElementById("main").style.display = "none";
+    document.getElementById("org").innerHTML = (`<img class="box" id="or" src="image${img[0]}.png">`);
     updateBoard();
     alert(`Welocome!\nClick on the pices that shares a side with blank box.\nBest of luck!!`);
     play();
@@ -107,7 +136,10 @@ function start() {
 
 document.getElementById("reset").addEventListener('click', () => {
     shuffleArray(nset);
+    shuffleArray(img);
+    document.getElementById("org").innerHTML = (`<img class="box" id="or" src="image${img[0]}.png">`);
     alert(`Don't give up!\nPlay till the last move.`);
-    totalMoves = 0;
+    movo();
     updateBoard();
+    play();
 });
