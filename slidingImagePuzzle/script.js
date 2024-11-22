@@ -47,20 +47,22 @@ document.getElementById("infoc").addEventListener('click', () => {
 
 document.getElementById("home").addEventListener('click', () => {
     if (confirm("Are you sure you want to leave the game?")) {
-        window.location.reload()}
+        window.location.reload()
+    }
 });
 
 document.getElementById("ref").addEventListener('click', () => {
     document.getElementById("org").style.display = "block";
     document.getElementById("ref").style.display = "none";
+    document.getElementById("ga").innerHTML = (`BACK TO GAME`);
     document.getElementById("ga").style.display = "block";
-  });
-  
-  document.getElementById("ga").addEventListener('click', () => {
+});
+
+document.getElementById("ga").addEventListener('click', () => {
     document.getElementById("org").style.display = "none";
     document.getElementById("ref").style.display = "block";
     document.getElementById("ga").style.display = "none";
-  });
+});
 
 function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
@@ -70,7 +72,7 @@ function shuffleArray(array) {
 }
 
 const set = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-const img = [1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3];
+const img = [1, 1, 2, 2, 3, 3];
 const nset = [...set];
 let totalMoves = 0;
 shuffleArray(nset);
@@ -86,14 +88,40 @@ function movp() {
     document.getElementById("mov").innerHTML = `${totalMoves}`;
 }
 
+function removeElement(array, elementToRemove) {
+    array.forEach((item, index) => {
+        if (item === elementToRemove) {
+            array.splice(index, 1);
+        }
+    });
+    return array;
+}
+
 function play() {
     let emptyTileIndex = nset.indexOf(9);
+
     const possibleMoves = [
         emptyTileIndex - 3,
         emptyTileIndex - 1,
         emptyTileIndex + 1,
         emptyTileIndex + 3
     ].filter(index => index >= 0 && index < 9);
+
+    console.log(possibleMoves);
+
+    if (emptyTileIndex == 2) {
+        delete possibleMoves[1];
+    }
+    if (emptyTileIndex == 5) {
+        delete possibleMoves[2];
+    }
+    if (emptyTileIndex == 3) {
+        delete possibleMoves[1];
+    }
+    if (emptyTileIndex == 6) {
+        delete possibleMoves[1];
+    }
+
 
     for (let i = 1; i < 10; i++) {
         document.getElementById(`p${i}`).onclick = null;
@@ -129,6 +157,7 @@ function checkWin() {
 function start() {
     document.getElementById("main").style.display = "none";
     document.getElementById("org").innerHTML = (`<img class="box" id="or" src="image${img[0]}.png">`);
+    document.getElementById("ga").innerHTML = (`SHUFFLE`);
     updateBoard();
     alert(`Welocome!\nClick on the pices that shares a side with blank box.\nBest of luck!!`);
     play();
@@ -140,6 +169,10 @@ document.getElementById("reset").addEventListener('click', () => {
     document.getElementById("org").innerHTML = (`<img class="box" id="or" src="image${img[0]}.png">`);
     alert(`Don't give up!\nPlay till the last move.`);
     movo();
+    document.getElementById("org").style.display = "block";
+    document.getElementById("ref").style.display = "none";
+    document.getElementById("ga").innerHTML = (`SHUFFLE`);
+    document.getElementById("ga").style.display = "block";
     updateBoard();
     play();
 });
