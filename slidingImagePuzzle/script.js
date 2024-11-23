@@ -51,17 +51,23 @@ document.getElementById("home").addEventListener('click', () => {
     }
 });
 
-document.getElementById("ref").addEventListener('click', () => {
+function on() {
+    document.getElementById("og").style.display = "none";
+    document.getElementById("ga").style.display = "none";
+    document.getElementById("sc").style.display = "block";
     document.getElementById("org").style.display = "block";
-    document.getElementById("ref").style.display = "none";
-    document.getElementById("ga").innerHTML = (`BACK TO GAME`);
-    document.getElementById("ga").style.display = "block";
-});
+    document.getElementById("org").innerHTML = (`<img class="box" id="or" src="image${img[0]}.png"><button id="ref"></button>`);
+    document.getElementById("ref").addEventListener('click', () => {
+        document.getElementById("og").style.display = "block";
+        document.getElementById("ga").style.display = "block";
+        document.getElementById("sc").style.display = "none";
+        document.getElementById("org").style.display = "none";
+        document.getElementById("ga").innerHTML = (`BACK TO GAME`);
+    });
+}
 
 document.getElementById("ga").addEventListener('click', () => {
-    document.getElementById("org").style.display = "none";
-    document.getElementById("ref").style.display = "block";
-    document.getElementById("ga").style.display = "none";
+    on();
 });
 
 function shuffleArray(array) {
@@ -107,7 +113,6 @@ function play() {
         emptyTileIndex + 3
     ].filter(index => index >= 0 && index < 9);
 
-    console.log(possibleMoves);
 
     if (emptyTileIndex == 2) {
         delete possibleMoves[1];
@@ -125,9 +130,11 @@ function play() {
 
     for (let i = 1; i < 10; i++) {
         document.getElementById(`p${i}`).onclick = null;
+        document.getElementById(`p${i}`).style.cursor = "auto";
     }
 
     possibleMoves.forEach(index => {
+        document.getElementById(`p${index + 1}`).style.cursor = "pointer";
         document.getElementById(`p${index + 1}`).onclick = () => {
             const tileValue = nset[index];
             nset[index] = 9;
@@ -157,22 +164,25 @@ function checkWin() {
 function start() {
     document.getElementById("main").style.display = "none";
     document.getElementById("org").innerHTML = (`<img class="box" id="or" src="image${img[0]}.png">`);
+    document.getElementById("og").innerHTML = (`<img class="box" id="ogs" src="image${img[0]}.png">`);
     document.getElementById("ga").innerHTML = (`SHUFFLE`);
     updateBoard();
-    alert(`Welocome!\nClick on the pices that shares a side with blank box.\nBest of luck!!`);
+    alert(`Welcome!!\nClick on the pices that shares a side with blank box.\nBest of luck!!`);
     play();
 }
 
 document.getElementById("reset").addEventListener('click', () => {
     shuffleArray(nset);
     shuffleArray(img);
+    updateBoard();
     document.getElementById("org").innerHTML = (`<img class="box" id="or" src="image${img[0]}.png">`);
+    document.getElementById("og").innerHTML = (`<img class="box" id="ogs" src="image${img[0]}.png"><button id="ref"></button>`);
     alert(`Don't give up!\nPlay till the last move.`);
     movo();
-    document.getElementById("org").style.display = "block";
-    document.getElementById("ref").style.display = "none";
-    document.getElementById("ga").innerHTML = (`SHUFFLE`);
     document.getElementById("ga").style.display = "block";
-    updateBoard();
+    document.getElementById("og").style.display = "block";
+    document.getElementById("sc").style.display = "none";
+    document.getElementById("org").style.display = "none";
+    document.getElementById("ga").innerHTML = (`SHUFFLE`);
     play();
 });

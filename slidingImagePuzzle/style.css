@@ -24,7 +24,7 @@ body {
         font-size: 70px;
     }
 
-    .puz{
+    .puz {
         font-size: 50px;
     }
 
@@ -32,22 +32,29 @@ body {
         position: absolute;
     }
 
-    #org {
-        display: block;
+    .slider {
+        margin-top: 10rem;
     }
+
+    #ref {
+        position: absolute;
+        background-color: #ffffff00;
+        cursor: zoom-in;
+        border: none;
+        left: 0;
+        margin: 0.5rem;
+    }
+
 
     #but1 {
         bottom: 50px;
     }
-    
+
     #but2 {
         bottom: 110px;
         display: block;
     }
 
-    #ref {
-        display: none;
-    }
 
     :root {
         --pannel: 18rem;
@@ -71,7 +78,7 @@ body {
         font-size: 70px;
     }
 
-    .puz{
+    .puz {
         font-size: 50px;
     }
 
@@ -79,22 +86,45 @@ body {
         position: absolute;
     }
 
+    .slider {
+        margin-top: 10rem;
+    }
+
+
+    #ref {
+        position: absolute;
+        background-color: #ffffff00;
+        cursor: zoom-in;
+        left: 0;
+        margin: 0.5rem;
+        border: none;
+
+        height: 9rem;
+        width: 9rem;
+
+    }
+
     #org {
-        display: block;
+        /* display: block; */
+        height: 10rem;
+        width: 10rem;
+        margin-bottom: 30rem;
+    }
+
+    #or {
+        height: 9rem;
+        width: 9rem;
     }
 
     #but1 {
         bottom: 50px;
     }
-    
+
     #but2 {
         bottom: 110px;
         display: block;
     }
 
-    #ref {
-        display: none;
-    }
 
     :root {
         --pannel: 21rem;
@@ -105,7 +135,7 @@ body {
 
 }
 
-@media only screen and (min-width: 425px) {
+@media only screen and (min-width: 600px) {
 
     /* For mobiles: */
     .sec {
@@ -118,7 +148,7 @@ body {
         font-size: 100px;
     }
 
-    .puz{
+    .puz {
         font-size: 80px;
     }
 
@@ -126,22 +156,25 @@ body {
         position: absolute;
     }
 
+    .slider {
+        margin-top: 2.5rem;
+        margin-right: 11rem;
+    }
+
     #org {
-        display: block;
+        margin-bottom: 3.75rem;
+        margin-left: 26rem;
     }
 
     #but1 {
         bottom: 50px;
     }
-    
+
     #but2 {
         bottom: 110px;
         display: block;
     }
 
-    #ref {
-        display: none;
-    }
 
     :root {
         --pannel: 24rem;
@@ -152,49 +185,37 @@ body {
 
 }
 
-@media only screen and (min-width: 600px) {
-
-    /* For tablets: */
-    .sec {
-        width: 80%;
-        height: 80vh;
-        border-radius: 16px;
-    }
-
-    h1 {
-        font-size: 100px;
-    }
-
-    .puz{
-        font-size: 80px;
-    }
-
-    .pan {
-        position: absolute;
-    }
-
-    #org {
-        display: block;
-    }
-
-    #but1 {
-        bottom: 30px;
-    }
-
-    #but2 {
-        display: block;
-        bottom: 85px;
+@media only screen and (min-width: 670px) {
+    .slider {
+        margin-top: 2.5rem;
+        margin-right: 15rem;
     }
 
     #ref {
-        display: none;
+        position: absolute;
+        background-color: #ffffff00;
+        cursor: zoom-in;
+        left: 0;
+
+        margin: 0.5rem;
+        border: none;
+
+        height: 13rem;
+        width: 13rem;
+
     }
 
-    :root {
-        --pannel: 50vh;
-        --pannela: 51vh;
-        --spannel: 16.667vh;
-        --mar: 0.5vh;
+    #or {
+        height: 13rem;
+        width: 13rem;
+
+    }
+
+    #org {
+        height: 14rem;
+        width: 14rem;
+        margin-bottom: 3.75rem;
+        margin-left: 26rem;
     }
 }
 
@@ -211,7 +232,7 @@ body {
         font-size: 100px;
     }
 
-    .puz{
+    .puz {
         font-size: 80px;
     }
 
@@ -219,12 +240,28 @@ body {
         position: relative;
     }
 
-    #org {
-        display: block;
+    .slider {
+        margin-bottom: 0;
+        margin-right: 0;
     }
-    
-    #but2 {
+
+    #ref {
         display: none;
+    }
+
+    #or {
+        height: 50vh;
+        width: 50vh;
+    }
+
+    #org {
+        height: 51vh;
+        width: 51vh;
+        margin-left: 0;
+    }
+
+    #but2 {
+        bottom: 95px;
     }
 
     :root {
@@ -475,7 +512,9 @@ h1 {
     animation-name: none;
 }
 
-#sta, #res, #ext {
+#sta,
+#res,
+#ext {
     display: none;
 }
 
@@ -598,6 +637,14 @@ li::before {
     border: 1px solid rgba(255, 255, 255, 0.69);
     font-family: "Roboto Mono";
     margin-bottom: 100px;
+}
+
+.sc{
+    display: none;
+}
+
+#og {
+    display: block;
 }
 
 .box {
