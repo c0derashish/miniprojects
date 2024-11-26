@@ -468,6 +468,7 @@ h1 {
     height: 0;
     width: 100%;
     top: -1px;
+    padding: 2rem;
     border-radius: 0 0 50% 50%;
     position: absolute;
     display: grid;
@@ -627,6 +628,10 @@ li::before {
     justify-content: space-around;
 }
 
+#cl {
+    display: none;
+}
+
 .pan {
     padding: 0;
     height: var(--pannela);
@@ -639,7 +644,7 @@ li::before {
     margin-bottom: 100px;
 }
 
-.sc{
+.sc {
     display: none;
 }
 
@@ -674,4 +679,19 @@ li::before {
     right: 0;
     background-color: #ffffff;
     display: flex;
+}
+
+#ga {
+    display: none;
+}
+
+#mess {
+    position: absolute;
+    padding: 1rem;
+    width: 95%;
+    color: #ffffff;
+    bottom: 0;
+    font-family: "Fuzzy Bubbles", sans-serif;
+    font-weight: 400;
+    font-style: normal;
 }

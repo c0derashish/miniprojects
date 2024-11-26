@@ -9,19 +9,6 @@ function toggleInfo(showInfo) {
     infoElement.style.animationName = showInfo ? "expandInfo" : "collapseInfo";
 }
 
-// const sta = document.getElementById("sta");
-// const res = document.getElementById("res");
-// const ext = document.getElementById("ext");
-// const alertp = document.getElementById("alert");
-// document.getElementsByClassName("close").addEventListener('click', () => {
-//     alertp.animationName = ("collapseInfo");
-//     sta.style.display = ("none");
-//     res.style.display = ("none");
-//     ext.style.display = ("none");
-//     alertp.style.height = "0%";
-//     alertp.style.borderRadius = ("0 0 50% 50%");
-// });
-
 document.getElementById("hom").addEventListener('click', () => {
     window.location.reload();
 });
@@ -37,13 +24,6 @@ document.getElementById("infoc").addEventListener('click', () => {
     document.getElementById("infoo").style.display = "block";
     document.getElementById("infoc").style.display = "none";
 });
-
-// document.getElementById("home").addEventListener('click', () => {
-//     ext.style.display = ("block");
-//     alertp.animationName = ("expandInfo");
-//     alertp.style.height = ("100%");
-//     alertp.style.borderRadius = ("0");
-// });
 
 document.getElementById("home").addEventListener('click', () => {
     if (confirm("Are you sure you want to leave the game?")) {
@@ -70,19 +50,35 @@ document.getElementById("ga").addEventListener('click', () => {
     on();
 });
 
+function isUnsolvable(puzzle) {
+    const flattened = puzzle.filter(tile => tile !== 0);
+    let inversions = 0;
+    for (let i = 0; i < flattened.length; i++) {
+        for (let j = i + 1; j < flattened.length; j++) {
+            if (flattened[i] > flattened[j]) {
+                inversions++;
+            }
+        }
+    }
+    return inversions % 2 !== 0;
+}
+
 function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         [array[i], array[j]] = [array[j], array[i]];
     }
+    const sset = [...array];
+    isUnsolvable(sset) ? shuffleArray(array) : play();
 }
 
-const set = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+const set = [1, 2, 3, 4, 5, 6, 7, 8, 0];
 const img = [1, 1, 2, 2, 3, 3];
 const nset = [...set];
 let totalMoves = 0;
 shuffleArray(nset);
 shuffleArray(img);
+
 
 function movo() {
     totalMoves = 0;
@@ -94,17 +90,8 @@ function movp() {
     document.getElementById("mov").innerHTML = `${totalMoves}`;
 }
 
-function removeElement(array, elementToRemove) {
-    array.forEach((item, index) => {
-        if (item === elementToRemove) {
-            array.splice(index, 1);
-        }
-    });
-    return array;
-}
-
 function play() {
-    let emptyTileIndex = nset.indexOf(9);
+    let emptyTileIndex = nset.indexOf(0);
 
     const possibleMoves = [
         emptyTileIndex - 3,
@@ -137,7 +124,7 @@ function play() {
         document.getElementById(`p${index + 1}`).style.cursor = "pointer";
         document.getElementById(`p${index + 1}`).onclick = () => {
             const tileValue = nset[index];
-            nset[index] = 9;
+            nset[index] = 0;
             nset[emptyTileIndex] = tileValue;
             emptyTileIndex = index;
             updateBoard();
@@ -154,35 +141,61 @@ function updateBoard() {
     }
 }
 
+function goodLuck() {
+    document.getElementById("og").innerHTML = (`<img class="box" id="ogs" src="goodLuck.jpg"><p id="mess"></p>`);
+    document.getElementById("cl").style.display = "block";
+    document.getElementById("ga").style.display = "none";
+    document.getElementById("og").style.display = "block";
+    document.getElementById("sc").style.display = "none";
+    document.getElementById("org").style.display = "none";
+    document.getElementById("mess").innerHTML = (`Welcome!!<br>Click on the pices that shares a side with blank box.`);
+}
+
+function congrats() {
+    document.getElementById("og").innerHTML = (`<img class="box" id="ogs" src="congrats.jpg"><p id="mess"></p>`);
+    document.getElementById("ga").style.display = "none";
+    document.getElementById("og").style.display = "block";
+    document.getElementById("sc").style.display = "none";
+    document.getElementById("org").style.display = "none";
+    document.getElementById("ga").style.display = "none";
+    document.getElementById("mess").innerHTML = (`You won the game!<br>In only ${totalMoves} moves.`);
+}
+
+document.getElementById("cl").addEventListener('click', () => {
+    document.getElementById("ga").style.display = "block";
+    document.getElementById("ga").innerHTML = (`SHUFFLE`);
+    document.getElementById("cl").style.display = "none";
+    document.getElementById("og").innerHTML = (`<img class="box" id="ogs" src="image${img[0]}.png"><button id="ref"></button>`);
+    document.getElementById("mess").innerHTML = '';
+});
+
 function checkWin() {
-    if (nset.join('') === '123456789') {
-        document.getElementById(`p9`).innerHTML = `<img src="image${img[0]}00.png" class="pl" id="pl9">`;
-        alert(`Congratulations! You won the game!\nIn only ${totalMoves} moves.`);
+    if (nset.join('') === '123456780') {
+        document.getElementById(`p9`).innerHTML = `<img src="image${img[0]}09.png" class="pl" id="pl9">`;
+        congrats();
     }
 }
 
 function start() {
     document.getElementById("main").style.display = "none";
     document.getElementById("org").innerHTML = (`<img class="box" id="or" src="image${img[0]}.png">`);
-    document.getElementById("og").innerHTML = (`<img class="box" id="ogs" src="image${img[0]}.png">`);
-    document.getElementById("ga").innerHTML = (`SHUFFLE`);
     updateBoard();
-    alert(`Welcome!!\nClick on the pices that shares a side with blank box.\nBest of luck!!`);
+    goodLuck();
     play();
 }
 
-document.getElementById("reset").addEventListener('click', () => {
+function restart() {
+    goodLuck();
     shuffleArray(nset);
     shuffleArray(img);
     updateBoard();
     document.getElementById("org").innerHTML = (`<img class="box" id="or" src="image${img[0]}.png">`);
-    document.getElementById("og").innerHTML = (`<img class="box" id="ogs" src="image${img[0]}.png"><button id="ref"></button>`);
-    alert(`Don't give up!\nPlay till the last move.`);
     movo();
-    document.getElementById("ga").style.display = "block";
-    document.getElementById("og").style.display = "block";
-    document.getElementById("sc").style.display = "none";
-    document.getElementById("org").style.display = "none";
-    document.getElementById("ga").innerHTML = (`SHUFFLE`);
     play();
+}
+
+document.getElementById("reset").addEventListener('click', () => {
+    if (confirm("Are you sure you want to restart the game?")) {
+        restart();
+    }
 });
