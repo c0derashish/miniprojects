@@ -6,6 +6,7 @@
 body {
     height: 100vh;
     width: 100%;
+    overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -442,7 +443,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: rgba(255, 255, 255, 0.3);
+    background: #00000077;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(9.3px);
     border: 1px solid rgba(255, 255, 255, 0.69);
@@ -458,14 +459,11 @@ h1 {
     font-family: "Joti One", serif;
     font-weight: 400;
     font-style: normal;
-    color: #4c4c4c;
-    text-shadow: 1px 1px 0px #ffffffb0;
+    color: #dbdbdb;
+    text-shadow: 1px 1px 0px #4c4c4c;
     line-height: 70px;
     padding: 40px;
-    border-radius: 16px;
     margin-bottom: 70px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    border: 1px solid #ffffffb0;
 }
 
 .start {
@@ -497,10 +495,10 @@ h1 {
     border-radius: 0 0 50% 50%;
     position: absolute;
     display: grid;
-    color: #202020;
+    color: #dbdbdb;
     justify-content: center;
     align-items: center;
-    background: rgba(255, 255, 255, 0.3);
+    background: #4c4c4cc5;
     box-shadow: 0 4px 30px #0000001a;
     backdrop-filter: blur(9.3px);
     border: 1px solid #ffffffc9;
@@ -568,7 +566,7 @@ li::before {
 .love {
     position: absolute;
     font-size: 10px;
-    color: #202020;
+    color: #dbdbdb;
     z-index: 1;
     font-family: "Roboto Mono", monospace;
     bottom: 5px;
@@ -611,7 +609,7 @@ li::before {
     padding: 0;
     height: var(--pannela);
     width: var(--pannela);
-    background: rgba(167, 167, 167, 0.3);
+    background: #0000004d;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(9.3px);
     border: 1px solid rgba(255, 255, 255, 0.69);
