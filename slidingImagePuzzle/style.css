@@ -4,7 +4,7 @@
 }
 
 body {
-    height: 100%;
+    height: 100svh;
     width: 100%;
     overflow: hidden;
     display: flex;
@@ -17,7 +17,7 @@ body {
     /* For mobiles: */
     .sec {
         width: 100%;
-        height: 100vh;
+        height: 100svh;
         border-radius: 0;
     }
 
@@ -56,16 +56,16 @@ body {
 
 
     #but1 {
-        bottom: 75px;
+        bottom: 65px;
     }
 
     #but2 {
-        bottom: 135px;
+        bottom: 125px;
         display: block;
     }
 
     .love {
-        bottom: 45px;
+        bottom: 35px;
     }
 
 
@@ -83,7 +83,7 @@ body {
     /* For mobiles: */
     .sec {
         width: 100%;
-        height: 100vh;
+        height: 100svh;
         border-radius: 0;
     }
 
@@ -135,16 +135,16 @@ body {
     }
 
     #but1 {
-        bottom: 75px;
+        bottom: 65px;
     }
 
     #but2 {
-        bottom: 135px;
+        bottom: 125px;
         display: block;
     }
 
     .love {
-        bottom: 45px;
+        bottom: 35px;
     }
 
 
@@ -162,7 +162,7 @@ body {
     /* For mobiles: */
     .sec {
         width: 100%;
-        height: 100vh;
+        height: 100svh;
         border-radius: 0;
     }
 
@@ -197,13 +197,18 @@ body {
     }
 
     #but1 {
-        bottom: 75px;
+        bottom: 65px;
     }
 
     #but2 {
-        bottom: 135px;
+        bottom: 125px;
         display: block;
     }
+
+    .love {
+        bottom: 35px;
+    }
+
 
 
     :root {
@@ -262,7 +267,7 @@ body {
     /* For desktop: */
     .sec {
         width: 80%;
-        height: 80vh;
+        height: 80svh;
         border-radius: 16px;
     }
 
@@ -288,13 +293,13 @@ body {
     }
 
     #or {
-        height: 50vh;
-        width: 50vh;
+        height: 50svh;
+        width: 50svh;
     }
 
     #org {
-        height: 51vh;
-        width: 51vh;
+        height: 51svh;
+        width: 51svh;
         margin-left: 0;
     }
 
@@ -308,54 +313,10 @@ body {
     }
 
     :root {
-        --pannel: 50vh;
-        --pannela: 51vh;
-        --spannel: 16.667vh;
-        --mar: 0.5vh;
-    }
-}
-
-@keyframes expandInfo {
-    from {
-        height: 0;
-        border-radius: 0 0 50% 50%;
-    }
-
-    to {
-        height: 105%;
-        border-radius: 0;
-    }
-}
-
-@keyframes collapseInfo {
-    from {
-        height: 105%;
-        border-radius: 0;
-    }
-
-    to {
-        height: 0;
-        border-radius: 0 0 50% 50%;
-    }
-}
-
-@keyframes togOut {
-    from {
-        left: 0;
-    }
-
-    to {
-        left: 100px;
-    }
-}
-
-@keyframes togIn {
-    from {
-        right: 100px;
-    }
-
-    to {
-        right: 0;
+        --pannel: 50svh;
+        --pannela: 51svh;
+        --spannel: 16.667svh;
+        --mar: 0.5svh;
     }
 }
 
@@ -444,7 +405,7 @@ body {
 }
 
 .screen {
-    height: 100vh;
+    height: 100svh;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -525,8 +486,7 @@ h1 {
     font-style: normal;
     margin: 0;
     overflow: hidden;
-    animation-duration: 1s;
-    animation-name: none;
+    transition: 1s ease-in-out;
 }
 
 hr {

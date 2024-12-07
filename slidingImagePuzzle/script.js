@@ -6,7 +6,6 @@ function toggleInfo(showInfo) {
     const infoElement = document.getElementsByClassName("info")[0];
     infoElement.style.height = showInfo ? "105%" : "0%";
     infoElement.style.borderRadius = showInfo ? "0" : "0 0 50% 50%";
-    infoElement.style.animationName = showInfo ? "expandInfo" : "collapseInfo";
 }
 
 document.getElementById("infoo").addEventListener('click', () => {
