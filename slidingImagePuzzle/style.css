@@ -4,7 +4,7 @@
 }
 
 body {
-    height: 100vh;
+    height: 100%;
     width: 100%;
     overflow: hidden;
     display: flex;
@@ -56,12 +56,16 @@ body {
 
 
     #but1 {
-        bottom: 50px;
+        bottom: 75px;
     }
 
     #but2 {
-        bottom: 110px;
+        bottom: 135px;
         display: block;
+    }
+
+    .love {
+        bottom: 45px;
     }
 
 
@@ -131,12 +135,16 @@ body {
     }
 
     #but1 {
-        bottom: 50px;
+        bottom: 75px;
     }
 
     #but2 {
-        bottom: 110px;
+        bottom: 135px;
         display: block;
+    }
+
+    .love {
+        bottom: 45px;
     }
 
 
@@ -189,11 +197,11 @@ body {
     }
 
     #but1 {
-        bottom: 50px;
+        bottom: 75px;
     }
 
     #but2 {
-        bottom: 110px;
+        bottom: 135px;
         display: block;
     }
 
@@ -235,6 +243,10 @@ body {
         height: 13rem;
         width: 13rem;
 
+    }
+
+    .love {
+        bottom: 20px;
     }
 
     #org {
@@ -286,8 +298,13 @@ body {
         margin-left: 0;
     }
 
+    #but1 {
+        bottom: 50px;
+    }
+
     #but2 {
         bottom: 95px;
+        display: block;
     }
 
     :root {
@@ -513,7 +530,7 @@ h1 {
 }
 
 hr {
-    border: 0.55px solid #4c4c4c;
+    border: 0.55px solid #dbdbdb;
     width: 100%;
     margin-bottom: 30px;
 }
@@ -569,7 +586,6 @@ li::before {
     color: #dbdbdb;
     z-index: 1;
     font-family: "Roboto Mono", monospace;
-    bottom: 5px;
 }
 
 .game {
