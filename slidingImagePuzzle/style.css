@@ -12,6 +12,26 @@ body {
     align-items: center;
 }
 
+/* Portrait orientation */
+@media screen and (orientation: portrait) {
+    body {
+      transform: rotate(0deg);
+      overflow: hidden;
+    }
+  }
+  
+  /* Landscape orientation */
+  @media screen and (orientation: landscape) {
+    body {
+      transform: rotate(-90deg);
+      transform-origin: top left;
+      width: 100svh;
+      height: 100svw;
+      overflow: hidden;
+    }
+  }
+  
+
 @media only screen and (max-width: 360px) {
 
     /* For mobiles: */
